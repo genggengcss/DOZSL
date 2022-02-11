@@ -1,6 +1,4 @@
-The code and data is for the paper xx
-
-Test test test
+Code and Data for the paper: "Disentangled Ontology Embedding for Zero-shot Learning".
 
 ## Ontology Encoder
 
