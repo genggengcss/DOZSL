@@ -1,15 +1,9 @@
-#!/usr/bin/python3
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
 import argparse
 import json
-# import logging
 import os
-import random
-
 import numpy as np
 import torch
 
@@ -20,7 +14,6 @@ from model import KGEModel
 
 from dataloader import TrainDataset
 from dataloader import BidirectionalOneShotIterator
-import codecs
 
 
 def parse_args(args=None):
@@ -40,27 +33,24 @@ def parse_args(args=None):
     parser.add_argument('--datadir', type=str, default='../data')
     parser.add_argument('--dataset', type=str, default='Wiki')
 
-    parser.add_argument('--kg_file', type=str, default='')
 
-    parser.add_argument('-save', '--save_name', type=str, default='')
+    parser.add_argument('--save_name', type=str, default='')
 
     parser.add_argument('--model', default='TransE', type=str)
-    parser.add_argument('-de', '--double_entity_embedding', action='store_true')
-    parser.add_argument('-dr', '--double_relation_embedding', action='store_true')
 
-    parser.add_argument('-n', '--negative_sample_size', default=1024, type=int)
-    parser.add_argument('-d', '--hidden_dim', default=100, type=int)
-    parser.add_argument('-g', '--gamma', default=12, type=float)
-    parser.add_argument('-adv', '--negative_adversarial_sampling', action='store_true', default=True)
-    parser.add_argument('-a', '--adversarial_temperature', default=1, type=float)
-    parser.add_argument('-b', '--batch_size', default=256, type=int)
-    parser.add_argument('-r', '--regularization', default=0.0, type=float)
+    parser.add_argument('--negative_sample_size', default=1024, type=int)
+    parser.add_argument('--hidden_dim', default=100, type=int)
+    parser.add_argument('--gamma', default=12, type=float)
+    parser.add_argument('--negative_adversarial_sampling', action='store_true', default=True)
+    parser.add_argument('--adversarial_temperature', default=1, type=float)
+    parser.add_argument('--batch_size', default=256, type=int)
+    parser.add_argument('--regularization', default=0.0, type=float)
     parser.add_argument('--test_batch_size', default=8, type=int, help='valid/test batch size')
     parser.add_argument('--uni_weight', action='store_true',
                         help='Otherwise use subsampling weighting like in word2vec')
 
-    parser.add_argument('-lr', '--learning_rate', default=0.00005, type=float)
-    parser.add_argument('-cpu', '--cpu_num', default=10, type=int)
+    parser.add_argument('--learning_rate', default=0.00005, type=float)
+    parser.add_argument('--cpu_num', default=10, type=int)
 
 
     parser.add_argument('--max_steps', default=80000, type=int)
@@ -122,22 +112,17 @@ def log_metrics(mode, step, metrics):
 def main(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = args.device
 
+    args.data_path = os.path.join(args.data_dir, args.dataset)
+    kg_file = os.path.join(args.data_path, 'triples.txt')
 
 
-    if args.dataset in ['ImNet_A', 'ImNet_O', 'AwA']:
-        args.data_path = os.path.join(args.data_dir, 'KG_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'KG_triples_hie_att.txt')
-
-    if args.dataset in ['NELL', 'Wiki']:
-        args.data_path = os.path.join(args.data_dir, 'Onto_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'rdfs_triples.txt')
     save_path = os.path.join(args.data_path, args.save_name)
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     # load data
 
     ent_set, rel_set = OrderedSet(), OrderedSet()
-    for line in open(args.kg_file):
+    for line in open(kg_file):
         sub, rel, obj = map(str.lower, line.strip().split('\t'))
         ent_set.add(sub)
         rel_set.add(rel)
@@ -168,7 +153,7 @@ def main(args):
     print('#entity num: %d' % nentity)
     print('#relation num: %d' % nrelation)
 
-    all_triples = read_triple(args.kg_file, entity2id,
+    all_triples = read_triple(kg_file, entity2id,
                               relation2id)
     print('#total triples num: %d' % len(all_triples))
 
@@ -181,9 +166,7 @@ def main(args):
         nentity=nentity,
         nrelation=nrelation,
         hidden_dim=args.hidden_dim,
-        gamma=args.gamma,
-        double_entity_embedding=args.double_entity_embedding,
-        double_relation_embedding=args.double_relation_embedding
+        gamma=args.gamma
     )
 
 

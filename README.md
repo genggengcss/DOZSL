@@ -24,11 +24,22 @@ Download from [here](https://github.com/Panda0406/Zero-shot-knowledge-graph-rela
 
 ### Basic Training and Testing
 
-- The first thing you need to do is to train the ontology encoder using the code in the folder `OntoEncoder`, you can get more details at [OntoEncoder/README.md](OntoEncoder/README.md).
+#### Disentangled Ontology Encoder
 
-- Secondly, with well-trained ontology embedding, you can take it as the input of the generative model (see codes in the folder `ZS_IMGC/models/DOZSL_GAN` or `ZS_KGC/models/DOZSL_GAN` for ZS-IMGC and ZS-KGC tasks, respectively) or the graph propagation model (see codes in the folder `ZS_IMGC/models/DOZSL_GCN` or `ZS_KGC/models/DOZSL_GCN` for ZS-IMGC and ZS-KGC tasks, respectively).
+The first thing you need to do is to train the disentangled ontology encoder, using the codes in the folders `OntoEncoder/DOZSL_RD` (for **RD** variants) and `OntoEncoder/DOZSL_AGG` (for **AGG** variants).
 
-*Note: you can skip the first step if you just want to use the ontology embedding we learned, the files are provided in the corresponding directories*.
+**Steps:**
+1. Running `run.py` in each method folder to obtain the disentangled concept embeddings;
+2. Selecting target **class** or **relation** embeddings from the trained concept embeddings by running `python out_imgc.py` for ZS-IMGC task and `python out_kgc.py` for ZS-KGC task;
 
-- The baselines for different ZSL methods are in the folders `ZS_IMGC/models` and `ZS_KGC/models`.
+
+#### Entangled ZSL Learner
+With the selected class embedding or relation embedding, you can take it to perform downstream ZSL tasks using the generative model or graph propagation model.
+The codes for generative model are in folder `ZS_IMGC/models/DOZSL_GAN` and `ZS_KGC/models/DOZSL_GAN` for ZS-IMGC and ZS-KGC tasks, respectively.
+The codes for propagation model are in folder `ZS_IMGC/models/DOZSL_GCN` and `ZS_KGC/models/DOZSL_GCN` for ZS-IMGC and ZS-KGC tasks, respectively
+
+*Note: you can skip the step of training ontology encoder if you just want to use the ontology embedding we learned, the embedding files have already been attached in the corresponding directories*.
+
+#### Baselines
+- The baselines for different ZSL methods are in the folders `ZS_IMGC/models` and `ZS_KGC/models` for ZS-IMGC and ZS-KGC tasks, respectively.
 - The baselines for different ontology embedding methods are in the folder `OntoEncoder`.

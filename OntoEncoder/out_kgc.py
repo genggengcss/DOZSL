@@ -1,13 +1,6 @@
 import os
 import json
-import sys
-import pickle as pkl
 import numpy as np
-import scipy.io as scio
-
-
-from collections import defaultdict
-
 import torch
 from torch.nn.init import xavier_normal_
 from torch.nn import Parameter
@@ -45,7 +38,7 @@ if __name__ == '__main__':
 
     DATASET_DIR = os.path.join(datadir, dataset)
 
-    embed_path = os.path.join('../../data/', 'Onto_' + dataset)
+    embed_path = os.path.join('../../data/', dataset)
 
 
 

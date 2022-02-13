@@ -13,7 +13,6 @@ def free_params(module: nn.Module):
         p.requires_grad = True
 
 
-# sys.path.append('./')
 
 class Runner(object):
 
@@ -21,7 +20,7 @@ class Runner(object):
 
 
         ent_set, rel_set = OrderedSet(), OrderedSet()
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             ent_set.add(sub)
             rel_set.add(rel)
@@ -57,7 +56,7 @@ class Runner(object):
         self.data = ddict(list)
         sr2o = ddict(set)
 
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             sub, rel, obj = self.ent2id[sub], self.rel2id[rel], self.ent2id[obj]
 
@@ -327,7 +326,6 @@ if __name__ == '__main__':
     parser.add_argument('--data_dir', default='../data', help='Set name for saving/restoring models')
     parser.add_argument('--dataset', default='NELL', help='Dataset to use, [ImNet-A, ImNet-O, AwA, NELL, Wiki]')
     parser.add_argument('--data_path', default='', help='')
-    parser.add_argument('--kg_file', default='', help='')
     parser.add_argument('--save_name', default='', help='Set name for saving/restoring models')
 
 
@@ -388,13 +386,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
 
-    if args.dataset in ['ImNet_A', 'ImNet_O', 'AwA']:
-        args.data_path = os.path.join(args.data_dir, 'KG_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'KG_triples_hie_att.txt')
 
-    if args.dataset in ['NELL', 'Wiki']:
-        args.data_path = os.path.join(args.data_dir, 'Onto_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'rdfs_triples.txt')
+    args.data_path = os.path.join(args.data_dir, args.dataset)
+    kg_file = os.path.join(args.data_path, 'triples.txt')
 
     save_path = os.path.join(args.data_path, args.save_name)
     ensure_path(save_path)

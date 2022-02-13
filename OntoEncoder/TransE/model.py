@@ -20,8 +20,7 @@ from dataloader import TestDataset
 
 
 class KGEModel(nn.Module):
-    def __init__(self, model_name, nentity, nrelation, hidden_dim, gamma,
-                 double_entity_embedding=False, double_relation_embedding=False):
+    def __init__(self, model_name, nentity, nrelation, hidden_dim, gamma):
         super(KGEModel, self).__init__()
         self.model_name = model_name
         self.nentity = nentity
@@ -39,8 +38,8 @@ class KGEModel(nn.Module):
             requires_grad=False
         )
 
-        self.entity_dim = hidden_dim * 2 if double_entity_embedding else hidden_dim
-        self.relation_dim = hidden_dim * 2 if double_relation_embedding else hidden_dim
+        self.entity_dim = hidden_dim
+        self.relation_dim = hidden_dim
 
         self.entity_embedding = nn.Parameter(torch.zeros(nentity, self.entity_dim))
         nn.init.uniform_(
@@ -56,18 +55,12 @@ class KGEModel(nn.Module):
             b=self.embedding_range.item()
         )
 
-        if model_name == 'pRotatE':
-            self.modulus = nn.Parameter(torch.Tensor([[0.5 * self.embedding_range.item()]]))
 
         # Do not forget to modify this line when you add a new model in the "forward" function
         if model_name not in ['TransE', 'DistMult', 'ComplEx', 'RotatE', 'pRotatE']:
             raise ValueError('model %s not supported' % model_name)
 
-        if model_name == 'RotatE' and (not double_entity_embedding or double_relation_embedding):
-            raise ValueError('RotatE should use --double_entity_embedding')
 
-        if model_name == 'ComplEx' and (not double_entity_embedding or not double_relation_embedding):
-            raise ValueError('ComplEx should use --double_entity_embedding and --double_relation_embedding')
 
     def forward(self, sample, mode='single'):
         '''

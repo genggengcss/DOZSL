@@ -13,7 +13,7 @@ def free_params(module: nn.Module):
         p.requires_grad = True
 
 
-# sys.path.append('./')
+
 
 class Runner(object):
 
@@ -21,7 +21,7 @@ class Runner(object):
 
 
         ent_set, rel_set = OrderedSet(), OrderedSet()
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             ent_set.add(sub)
             rel_set.add(rel)
@@ -57,7 +57,7 @@ class Runner(object):
         self.data = ddict(list)
         sr2o = ddict(set)
 
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             sub, rel, obj = self.ent2id[sub], self.rel2id[rel], self.ent2id[obj]
 
@@ -103,18 +103,9 @@ class Runner(object):
             'valid_head': get_data_loader(TestDataset, 'valid_head', self.p.test_batch_size),
             'valid_tail': get_data_loader(TestDataset, 'valid_tail', self.p.test_batch_size),
         }
-        # self.edge_index, self.edge_type = self.construct_adj()
         self.rel_edges = self.construct_adj()
 
     def construct_adj(self):
-        """
-        Constructor of the runner class
-        Returns
-        -------
-        Constructs the adjacency matrix for GCN
-
-        """
-        edge_index, edge_type = [], []
 
         rel_edges = defaultdict(list)
 
@@ -122,19 +113,9 @@ class Runner(object):
 
             rel_edges[rel].append((sub, obj))
             rel_edges[rel + self.p.num_rel].append((obj, sub))
-            # edge_index.append((sub, obj))
-            # edge_type.append(rel)
 
-        # Adding inverse edges
-        # for sub, rel, obj in self.data['train']:
-        #     edge_index.append((obj, sub))
-        #     edge_type.append(rel + self.p.num_rel)
 
-        # edge_index: 2 * 2E, edge_type: 2E * 1
-        # edge_index = torch.LongTensor(edge_index).cuda().t()
-        # edge_type = torch.LongTensor(edge_type).cuda()
 
-        # return edge_index, edge_type
         return rel_edges
 
     def __init__(self, params):
@@ -380,7 +361,6 @@ if __name__ == '__main__':
     parser.add_argument('--data_dir', default='../data', help='Set name for saving/restoring models')
     parser.add_argument('--dataset', default='ImNet_A', help='Dataset to use, [ImNet-A, ImNet-O, AwA, NELL, Wiki]')
     parser.add_argument('--data_path', default='', help='')
-    parser.add_argument('--kg_file', default='', help='')
     parser.add_argument('--save_name', default='DOZSL_AGG_sub_K4_D100_ImNet_A', help='Set name for saving/restoring models')
 
 
@@ -440,14 +420,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-
-    if args.dataset in ['ImNet_A', 'ImNet_O', 'AwA']:
-        args.data_path = os.path.join(args.data_dir, 'KG_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'KG_triples_hie_att.txt')
-
-    if args.dataset in ['NELL', 'Wiki']:
-        args.data_path = os.path.join(args.data_dir, 'Onto_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'rdfs_triples.txt')
+    args.data_path = os.path.join(args.data_dir, args.dataset)
+    kg_file = os.path.join(args.data_path, 'triples.txt')
 
     save_path = os.path.join(args.data_path, args.save_name)
     ensure_path(save_path)

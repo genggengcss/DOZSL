@@ -1,15 +1,9 @@
-import sys
-
 from helper import *
 from data_loader import *
 from model import *
-import traceback
 import os
-import os.path as osp
 import json
-import shutil
 import argparse
-import time
 
 
 def frozen_params(module: nn.Module):
@@ -31,7 +25,7 @@ class Runner(object):
         ent_set, rel_set = OrderedSet(), OrderedSet()
 
 
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             ent_set.add(sub)
             rel_set.add(rel)
@@ -63,7 +57,7 @@ class Runner(object):
         self.data = ddict(list)
         sr2o = ddict(set)
 
-        for line in open(self.p.kg_file):
+        for line in open(kg_file):
             sub, rel, obj = map(str.lower, line.strip().split('\t'))
             sub, rel, obj = self.ent2id[sub], self.rel2id[rel], self.ent2id[obj]
 
@@ -336,21 +330,14 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.dataset in ['ImNet_A', 'ImNet_O', 'AwA']:
-        args.data_path = os.path.join(args.data_dir, 'KG_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'KG_triples_hie_att.txt')
 
-    if args.dataset in ['NELL', 'Wiki']:
-        args.data_path = os.path.join(args.data_dir, 'Onto_'+args.dataset)
-        args.kg_file = os.path.join(args.data_path, 'rdfs_triples.txt')
+    args.data_path = os.path.join(args.data_dir, args.dataset)
+    kg_file = os.path.join(args.data_path, 'triples.txt')
 
 
-    # set save path (name + current time)
-    # args.save_name = args.save_name + '_' + time.strftime('%d_%m_%Y') + '_' + time.strftime('%H:%M:%S')
 
     save_path = os.path.join(args.data_path, args.save_name)
     ensure_path(save_path)
-    # os.mkdir(save_path)
 
 
 

@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
     if dataset == 'AwA2':
         DATASET_DIR = os.path.join(datadir, dataset)
-        embed_path = os.path.join('../../data/', 'KG_AwA')
+        embed_path = os.path.join('../../data/', 'AwA')
         namespace = 'AwA:'
 
         if SemEmbed == 'TransE':
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
     else:
         DATASET_DIR = os.path.join(datadir, 'ImageNet', dataset)
-        embed_path = os.path.join('../../data/', 'KG_' + dataset)
+        embed_path = os.path.join('../../data/', dataset)
         if dataset == 'ImNet_A':
             namespace = 'ImNet-A:'
             if SemEmbed == 'TransE':
