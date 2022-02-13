@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="203aa106-ffe2-4d39-bd7f-f5045b67523a" name="Default Changelist" comment="updated">
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DOZSL_RD/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DOZSL_RD/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DisenE/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DisenE/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DisenKGAT/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DisenKGAT/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/DisenKGAT/run_mult.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/DisenKGAT/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/RGAT/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/RGAT/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/TransE/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/TransE/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/TransE/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/TransE/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_AwA/KG_triples_hie_att.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/AwA/triples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_AwA/literals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/AwA/literals.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_ImNet_A/KG_triples_hie_att.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/ImNet_A/triples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_ImNet_A/literals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/ImNet_A/literals.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_ImNet_O/KG_triples_hie_att.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/ImNet_O/triples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/KG_ImNet_O/literals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/ImNet_O/literals.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/Onto_NELL/rdfs_triples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/NELL/triples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/Onto_Wiki/literals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/Wiki/literals.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/data/Onto_Wiki/rdfs_triples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/data/Wiki/triples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/out_imgc.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/out_imgc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntoEncoder/out_kgc.py" beforeDir="false" afterPath="$PROJECT_DIR$/OntoEncoder/out_kgc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/ZSL2021$test.coverage" NAME="test Coverage Results" MODIFIED="1634709369891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_KGC/models/DeViSE" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_SNE_all.coverage" NAME="t-SNE-all Coverage Results" MODIFIED="1643116594463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_cluster.coverage" NAME="t-cluster Coverage Results" MODIFIED="1643208375257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_SNE__1_.coverage" NAME="t-SNE (1) Coverage Results" MODIFIED="1643109845713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$awa_plot.coverage" NAME="awa_plot Coverage Results" MODIFIED="1644136850047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$NELL_plot.coverage" NAME="NELL_plot Coverage Results" MODIFIED="1644146572536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$make_induced_graph.coverage" NAME="make_induced_graph Coverage Results" MODIFIED="1635757156070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/DGP/Exp_ImageNet" />
+    <SUITE FILE_PATH="coverage/ZSL2021$train.coverage" NAME="train Coverage Results" MODIFIED="1634546059407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder/HieEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021_public$count.coverage" NAME="count Coverage Results" MODIFIED="1644241783538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OntoEncoder/data" />
+    <SUITE FILE_PATH="coverage/ZSL2021$io_out.coverage" NAME="io_out Coverage Results" MODIFIED="1634546240732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder/HieEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021$imnet_a_plot.coverage" NAME="imnet_a_plot Coverage Results" MODIFIED="1644134354092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$binary_att.coverage" NAME="binary_att Coverage Results" MODIFIED="1634544005302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_SNE.coverage" NAME="t-SNE Coverage Results" MODIFIED="1643109222567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$plot.coverage" NAME="plot Coverage Results" MODIFIED="1642732443559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ZSL2021$io_graph.coverage" NAME="io_graph Coverage Results" MODIFIED="1634546038120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder/HieEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021$w2v_glove_embed.coverage" NAME="w2v_glove_embed Coverage Results" MODIFIED="1634787805605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_SNE_all_imgc.coverage" NAME="t-SNE-all-imgc Coverage Results" MODIFIED="1643121930308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$Wiki_plot.coverage" NAME="Wiki_plot Coverage Results" MODIFIED="1644146505421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$io_embed2.coverage" NAME="io_embed2 Coverage Results" MODIFIED="1634546052529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZS_IMGC/models/SemEncoder/HieEncoder" />
+    <SUITE FILE_PATH="coverage/ZSL2021$NELL_plot__1_.coverage" NAME="NELL_plot (1) Coverage Results" MODIFIED="1643095959394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$t_SNE_component2.coverage" NAME="t-SNE_component2 Coverage Results" MODIFIED="1643109210176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+    <SUITE FILE_PATH="coverage/ZSL2021$imnet_o_plot.coverage" NAME="imnet_o_plot Coverage Results" MODIFIED="1644135787595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DOZSL_Plot" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-229433403">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="40" />
+          <entry key="project.open.time.0" value="5" />
+          <entry key="project.open.time.1" value="10" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.5" value="5" />
+          <entry key="project.open.time.6" value="15" />
+          <entry key="project.open.time.7" value="3" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="README" value="1" />
+          <entry key="md" value="59" />
+          <entry key="out" value="47" />
+          <entry key="py" value="1090" />
+          <entry key="pyi" value="1" />
+          <entry key="txt" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="110" />
+          <entry key="Python" value="1090" />
+          <entry key="PythonStub" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="114" />
+          <entry key="md" value="794" />
+          <entry key="py" value="39862" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="908" />
+          <entry key="Python" value="39862" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1987904906">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="md" value="29" />
+          <entry key="py" value="68" />
+          <entry key="txt" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="31" />
+          <entry key="Python" value="68" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="3" />
+          <entry key="md" value="654" />
+          <entry key="py" value="2047" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="657" />
+          <entry key="Python" value="2047" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1416082728">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="md" value="16" />
+          <entry key="py" value="30" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="Python" value="30" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="1" />
+          <entry key="md" value="2035" />
+          <entry key="py" value="189" />
+          <entry key="txt" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="2045" />
+          <entry key="Python" value="189" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ZSL2021" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/TransE/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#2#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4250">
+              <caret line="250" column="22" selection-start-line="250" selection-start-column="6" selection-end-line="250" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="349" lean-forward="true" selection-start-line="349" selection-end-line="349" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/out_kgc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/out_imgc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OntoEncoder/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>politicianholdsoffice</find>
+      <find>cityliesonriver</find>
+      <find>river</find>
+      <find>university</find>
+      <find>persongraduatedfromuniversity</find>
+      <find>persongradu</find>
+      <find>persongra</find>
+      <find>persongr</find>
+      <find>propagate</find>
+      <find>edge</find>
+      <find>edge_index</find>
+      <find>bias</find>
+      <find>in_type</find>
+      <find>att_weight</find>
+      <find>loop_type</find>
+      <find>att_mode</find>
+      <find>device</find>
+      <find>conv</find>
+      <find>update</find>
+      <find>drop</find>
+      <find>p.dropout</find>
+      <find>dropout</find>
+      <find>self.drop</find>
+      <find>num_rel</find>
+      <find>optimizer_fn</find>
+      <find>DOZSL_Random_TransE</find>
+      <find>score_func</find>
+      <find>DOZSL_AGG</find>
+      <find>double_entity_embedding</find>
+      <find>kg_file</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/run_wiki.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/README.md" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DGP/train.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DGP/run.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DGP/README.md" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DualGraph/train.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/TripleGraph/run.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/RGCN-ZSL/README.md" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_Random/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/RGAT/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DisenKGAT/run_mult.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/RGAT/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/TransE/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/out_kgc.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/README.md" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/util.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/gan_kgc.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/args.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/args.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DisenE/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DisenKGAT/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/RGAT/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/TransE/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/methods/out_imgc.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DisenE/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_RD/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/TransE/model.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/RGAT/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DOZSL_RD/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/TransE/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DisenKGAT/run_mult.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DisenE/run.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/out_kgc.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/out_imgc.py" />
+        <option value="$PROJECT_DIR$/OntoEncoder/README.md" />
+        <option value="$PROJECT_DIR$/OntoEncoder/DisenKGAT/README.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="25" />
+    <option name="width" value="1391" />
+    <option name="height" value="875" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ZSL2021_public" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DOZSL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZSL2021_public" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DOZSL" type="462c0819:PsiDirectoryNode" />
+              <item name="OntoEncoder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZSL2021_public" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DOZSL" type="462c0819:PsiDirectoryNode" />
+              <item name="OntoEncoder" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZSL2021_public" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DOZSL" type="462c0819:PsiDirectoryNode" />
+              <item name="OntoEncoder" type="462c0819:PsiDirectoryNode" />
+              <item name="methods" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="OntoEncoder" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="OntoEncoder" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="OntoEncoder" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="DisenKGAT" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="OntoEncoder" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="TransE" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ImageNet" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_KGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_KGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_KGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DisenSemEncoder/methods/TransE" />
+      <recent name="$PROJECT_DIR$/DisenSemEncoder/methods" />
+      <recent name="$PROJECT_DIR$/DOZSL_Plot/fig" />
+      <recent name="$PROJECT_DIR$/ZS_IMGC/models/DKGP2" />
+      <recent name="$PROJECT_DIR$/ZS_KGC/models/DGP" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OntoEncoder" />
+      <recent name="$PROJECT_DIR$/OntoEncoder/methods" />
+      <recent name="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_Random" />
+      <recent name="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub" />
+      <recent name="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.count">
+    <configuration name="NELL_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DOZSL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DOZSL_Plot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DOZSL_Plot/NELL_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Wiki_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DOZSL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DOZSL_Plot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DOZSL_Plot/Wiki_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="awa_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DOZSL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DOZSL_Plot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DOZSL_Plot/awa_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="count" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DOZSL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OntoEncoder/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OntoEncoder/data/count.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="imnet_o_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DOZSL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DOZSL_Plot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DOZSL_Plot/imnet_o_plot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.imnet_o_plot" />
+      <item itemvalue="Python.awa_plot" />
+      <item itemvalue="Python.Wiki_plot" />
+      <item itemvalue="Python.NELL_plot" />
+      <item itemvalue="Python.count" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.count" />
+        <item itemvalue="Python.NELL_plot" />
+        <item itemvalue="Python.Wiki_plot" />
+        <item itemvalue="Python.awa_plot" />
+        <item itemvalue="Python.imnet_o_plot" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="203aa106-ffe2-4d39-bd7f-f5045b67523a" name="Default Changelist" comment="" />
+      <created>1632728952589</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632728952589</updated>
+    </task>
+    <task id="LOCAL-00001" summary="updated">
+      <created>1644473446301</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644473446301</updated>
+    </task>
+    <task id="LOCAL-00002" summary="updated">
+      <created>1644540718905</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644540718905</updated>
+    </task>
+    <task id="LOCAL-00003" summary="updated">
+      <created>1644751420326</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644751420326</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1391" height="875" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49896908" visible="true" weight="0.24684952" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.5010309" side_tool="true" weight="0.25796887" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49888808" visible="true" weight="0.32891247" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49888808" weight="0.1259947" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49962935" weight="0.39920425" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5011119" side_tool="true" visible="true" weight="0.32891247" />
+      <window_info anchor="bottom" id="Version Control" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="File Transfer" order="7" sideWeight="0.49814677" weight="0.19761273" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32891247" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="10" />
+      <window_info anchor="bottom" id="Find" order="11" weight="0.32891247" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="SciView" order="2" weight="0.43513715" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="5" weight="0.21571535" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/RGAT/run.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/TransE/run.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/data_loader.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/TransE/out.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/TransE/out_facts.py" />
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/args.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/spectral_norm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/data/AwA/triples.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/modules.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/args.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="126" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/Networks.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/gan_kgc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10642">
+          <caret line="626" column="37" selection-start-line="626" selection-start-column="37" selection-end-line="626" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/extractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DisenE/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/run.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/RGAT/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DisenKGAT/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/TransE/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/out_kgc.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/README.md" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/out_imgc.py" />
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4097">
+          <caret line="243" column="19" selection-start-line="243" selection-start-column="6" selection-end-line="243" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_RD/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="120" column="18" selection-start-line="120" selection-start-column="6" selection-end-line="120" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4080">
+          <caret line="242" column="15" selection-start-line="242" selection-start-column="6" selection-end-line="242" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/RGAT/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/TransE/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="389" column="29" lean-forward="true" selection-start-line="389" selection-start-column="29" selection-end-line="389" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/TransE/dataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2414">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/RGAT/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/RGAT/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/TransE/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/RGAT/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6613">
+          <caret line="389" column="4" selection-start-line="389" selection-start-column="4" selection-end-line="390" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_RD/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#1#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#2#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4250">
+          <caret line="250" column="22" selection-start-line="250" selection-start-column="6" selection-end-line="250" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="349" lean-forward="true" selection-start-line="349" selection-end-line="349" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/out_kgc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/out_imgc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="196" lean-forward="true" selection-start-line="196" selection-end-line="196" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenKGAT/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OntoEncoder/TransE/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
