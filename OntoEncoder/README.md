@@ -24,11 +24,19 @@ Download from [here](https://github.com/Panda0406/Zero-shot-knowledge-graph-rela
 
 ### Basic Training and Testing
 
-- The first thing you need to do is to train the ontology encoder using the code in the folder `OntoEncoder`, you can get more details at [OntoEncoder/README.md](OntoEncoder/README.md).
+The first thing you need to do is to train the ontology encoder using the code in the folder `OntoEncoder`, you can get more details at [OntoEncoder/README.md](OntoEncoder/README.md).
 
-- Secondly, with well-trained ontology embedding, you can take it as the input of the generative model (see codes in the folder `ZS_IMGC/models/DOZSL_GAN` or `ZS_KGC/models/DOZSL_GAN` for ZS-IMGC and ZS-KGC tasks, respectively) or the graph propagation model (see codes in the folder `ZS_IMGC/models/DOZSL_GCN` or `ZS_KGC/models/DOZSL_GCN` for ZS-IMGC and ZS-KGC tasks, respectively).
+Secondly, with well-trained ontology embedding, you can take it as the input of the generative model (see codes in the folder `ZS_IMGC/models/DOZSL_GAN` or `ZS_KGC/models/DOZSL_GAN` for ZS-IMGC and ZS-KGC tasks, respectively) or the graph propagation model (see codes in the folder `ZS_IMGC/models/DOZSL_GCN` or `ZS_KGC/models/DOZSL_GCN` for ZS-IMGC and ZS-KGC tasks, respectively).
 
 *Note: you can skip the first step if you just want to use the ontology embedding we learned, the files are provided in the corresponding directories*.
 
-- The baselines for different ZSL methods are in the folders `ZS_IMGC/models` and `ZS_KGC/models`.
-- The baselines for different ontology embedding methods are in the folder `OntoEncoder`.
+
+#### Ontology Encoder
+
+### Steps:
+
+1.  Running the scripts in each method folder to pre-train the KGs and ontological schemas
+
+2. Selecting the targte class embeddings from the trained concept embeddings by running `python out_imgc.py` for ZS-IMGC tasks, and `python out_kgc.py` for ZS-KGC tasks
+3. Using the selected embeddings to perform the downstream ZSL methods, including `DOZSL_GAN` (for generation based) and `DOZSL_GCN` (for propagation based)
+
