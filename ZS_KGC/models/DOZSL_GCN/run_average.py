@@ -21,10 +21,6 @@ warnings.filterwarnings("ignore")
 
 
 
-
-
-
-
 class Runner:
     def __init__(self, args):
         self.args = args
@@ -60,18 +56,23 @@ class Runner:
         feature_encoder.apply(self.weights_init)
         MODEL_PATH = os.path.join(args.DATA_DIR, args.DATASET, 'expri_data', 'models_train',
                                   args.embed_model + '_Extractor')
-        feature_encoder.load_state_dict(torch.load(MODEL_PATH))
+        # feature_encoder.load_state_dict(torch.load(MODEL_PATH))
+        feature_encoder.load_state_dict(torch.load(MODEL_PATH, map_location=lambda storage, loc: storage.cuda(args.device)))
+
         self.feature_encoder = feature_encoder
         self.feature_encoder.eval()
 
 
         # prepare graph
 
+        sem_features = np.load(args.sem_features_file)
+        K_values = sem_features.size(1)
 
-        node_feats = self.extract_embed_features(args)
+        node_feats1, node_feats2 = self.extract_disentangled_features(args)
 
         self.sim_threshold = args.sim_threshold
-        self.input, self.adj = self.build_graph(node_feats, self.sim_threshold)
+        self.input1, self.adj1 = self.build_graph(node_feats1, self.sim_threshold)
+        self.input2, self.adj2 = self.build_graph(node_feats2, self.sim_threshold)
 
         print("Loading Training Data ... ")
         fc_vectors = self.prepare_train_data()
@@ -82,10 +83,7 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
         # Loss and optimizer
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=self.args.lr, weight_decay=self.args.l2
@@ -96,8 +94,12 @@ class Runner:
         similarity_matrix = self.get_cos_similarity(features)
 
         similarity_matrix = similarity_matrix >= threshold
-        adj = similarity_matrix.astype(float)
 
+        similarity_matrix = similarity_matrix.astype(float)
+        row, col = np.diag_indices_from(similarity_matrix)
+        similarity_matrix[row, col] = 0
+        similarity_matrix = similarity_matrix + np.eye(similarity_matrix.shape[0])
+        adj = similarity_matrix
         adj = sp.coo_matrix(adj)
 
         # adj = sp.coo_matrix((np.ones(len(edges)), (edges[:, 0], edges[:, 1])),
@@ -106,7 +108,7 @@ class Runner:
         adj = spm_to_tensor(adj)
         adj = adj.cuda()
 
-        node_vectors = torch.tensor(features).float().cuda()
+        node_vectors = torch.tensor(features).cuda()
         node_vectors = F.normalize(node_vectors)
 
         return node_vectors, adj
@@ -119,38 +121,42 @@ class Runner:
         res = 0.5 + 0.5 * res
         return res
 
-    def extract_embed_features(self, args):
-        rel2id = json.load(open(os.path.join(args.DATA_DIR, args.DATASET, 'relation2ids')))
+    def extract_disentangled_features(self, args):
+        # embed_path = '/home/gyx/KGE/DisenKGE/' + 'checkpoints/TransE_K4_D200_Onto_14_12_2021_14:16:47'
+        # embed_file = os.path.join(embed_path, '22:05:46_7600_7504_ent_embeddings.npy')
+        #
+        # entity_file = '/home/gyx/KGE/DisenKGE/' + 'data/NELL_Onto/ent2id.txt'
+        # ent2id = json.load(open(entity_file))
 
+        # embed_path = '/home/gyx/ZSL2021/DisenSemEncoder/data'
+        embed_path = '/home/xuyajing/zsl2021/ZSL2021/DisenSemEncoder/data'
         if args.DATASET == 'NELL':
-            embed_path = '/home/xuyajing/zsl2021/ZSL2021/DisenSemEncoder/data'
-
-            embed_file = os.path.join(embed_path, 'Onto_NELL/DisenE_TransE_K4_D200_NELL',
-                                      '6400_6278_ent_embeddings.npy')
-
+            embed_file = os.path.join(embed_path, 'Onto_NELL/DisenKAGT_TransE_mult_K2_D200_NELL',
+                                      '5600_5525_ent_embeddings.npy')
             entity_file = os.path.join(embed_path, 'Onto_NELL/ent2id.txt')
-
         if args.DATASET == 'Wiki':
-            embed_file = 'rela_matrix_rdfs_65000.npz'
-            # embed_file = 'kge_DisenKGAT/DisenKGAT_K1_D200_6400_6357.npz'
+            embed_file = os.path.join(embed_path, 'Onto_Wiki/DOZSL_Random_Atten_K2_D200_Wiki',
+                                      '10600_10152_ent_embeddings.npy')
+            entity_file = os.path.join(embed_path, 'Onto_Wiki/ent2id.txt')
 
         ent2id = json.load(open(entity_file))
 
         embeds = np.load(embed_file)
-
-        feat_list = []
+        feat1_list, feat2_list = [], []
         for rel in self.all_rels:
-
             if args.DATASET == 'NELL':
                 rel = rel.replace('concept:', 'NELL:')
+            if args.DATASET == 'Wiki':
+                rel = 'Wikidata:'+rel
             rel = rel.lower()
             if rel in ent2id:
-                vector = embeds[ent2id[rel]].reshape(800)
-                feat_list.append(vector)
+                vector = embeds[ent2id[rel]]
+                feat1_list.append(vector[0])
+                feat2_list.append(vector[1])
             else:
                 print(rel)
 
-        return np.array(feat_list)
+        return np.array(feat1_list), np.array(feat2_list)
 
 
     def prepare_train_data(self):
@@ -255,10 +261,13 @@ class Runner:
         n_train = self.labels.shape[0]
         # Start training
         self.model.train()
-        if args.intra_atten:
-            output_vectors, _ = self.model(self.input, self.adj)
-        else:
-            output_vectors = self.model(self.input, self.adj)
+
+        output_vectors1 = self.model(self.input1, self.adj1)
+        output_vectors2 = self.model(self.input2, self.adj2)
+        output_vectors = weights[0] * output_vectors1 + weights[1] * output_vectors2
+
+
+
 
         loss = self.l2_loss(output_vectors[:n_train], self.labels)
         # Backward and optimize
@@ -270,10 +279,12 @@ class Runner:
             with torch.no_grad():
                 self.model.eval()
 
-                if args.intra_atten:
-                    output_vectors, _ = self.model(self.input, self.adj)
-                else:
-                    output_vectors = self.model(self.input, self.adj)
+
+                output_vectors1 = self.model(self.input1, self.adj1)
+                output_vectors2 = self.model(self.input2, self.adj2)
+
+                output_vectors = weights[0] * output_vectors1 + weights[1] * output_vectors2
+
 
 
 
@@ -291,7 +302,6 @@ class Runner:
     def test(self, pred_vectors):
         # test_candidates = json.load(open(os.path.join(args.DATA_DIR, args.DATASET, "test_candidates_sub_10.json")))
         test_candidates = json.load(open(os.path.join(args.DATA_DIR, args.DATASET, "test_candidates.json")))
-
 
         hits10 = []
         hits5 = []
@@ -401,6 +411,8 @@ if __name__ == "__main__":
 
     # parameters for GCN
     parser.add_argument('--input_dim', type=int, default=200, help='the dimension of node features')
+    parser.add_argument('--sem_features_file', type=str, default='', help='')
+
     parser.add_argument("--hidden_layers", type=str, default='d200,d', help="Number of hidden units.")
 
     # parameters for training
@@ -421,7 +433,7 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=2500, help="Number of epochs to train.")
 
 
-    parser.add_argument('--sim_threshold', type=float, default=0.85)
+    parser.add_argument('--sim_threshold', type=float, default=0.98)
     parser.add_argument('--intra_atten', action='store_true')
     parser.add_argument('--inter_atten', action='store_true')
     parser.add_argument('--mask_weight', type=int, default=500)

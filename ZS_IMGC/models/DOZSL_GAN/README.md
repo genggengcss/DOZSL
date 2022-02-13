@@ -1,4 +1,4 @@
-## Running Command
+## Running Commands
 
 **AwA2**
 
