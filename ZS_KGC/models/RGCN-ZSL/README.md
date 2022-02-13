@@ -1,4 +1,3 @@
-
 # for NELL-ZS
 
 python run.py --bases 2

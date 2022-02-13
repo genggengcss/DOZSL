@@ -1,6 +1,6 @@
 # for NELL
 
-python gan_kgc.py --device
+python gan_kgc.py --device 1
 
 
 # for Wiki
