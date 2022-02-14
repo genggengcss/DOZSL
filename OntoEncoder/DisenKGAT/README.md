@@ -1,4 +1,4 @@
-## Running Command
+## Running Commands
 
 **For AwA (K options: 2,4,5)**
 ```

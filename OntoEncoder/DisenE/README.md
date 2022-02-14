@@ -1,4 +1,4 @@
-## Running Command
+## Running Commands
 
 **For AwA (K=2 & K=4)**
 ```

@@ -1,4 +1,4 @@
-## Running Command
+## Running Commands
 
 **For AwA & ImNet_A/O**
 ```
