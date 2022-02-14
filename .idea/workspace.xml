@@ -3,22 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="203aa106-ffe2-4d39-bd7f-f5045b67523a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/CompGCN-ZSL/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/CompGCN-ZSL/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/class_disen.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/class_disen1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/class_disen2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_disen_whole.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/RGCN-ZSL/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/RGCN-ZSL/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DGP/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DGP/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/rel_disen.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/rel_disen2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/rel_disen9.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_disen_whole.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/TripleGraph/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/TripleGraph/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/gcn.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/gcn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_average.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_average.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_fn.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K4_average.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K4_fn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_average.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_average.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_fn.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_nodisen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_nodisen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/gcn.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/gcn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K2_linear.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_average.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K8_linear.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_average.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_average.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_nodisen.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_nodisen.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,28 +147,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="md" value="31" />
-          <entry key="py" value="35" />
+          <entry key="md" value="34" />
+          <entry key="py" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="31" />
-          <entry key="Python" value="35" />
+          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="Python" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="1" />
-          <entry key="md" value="2426" />
-          <entry key="py" value="268" />
+          <entry key="dummy" value="39" />
+          <entry key="md" value="2709" />
+          <entry key="py" value="896" />
           <entry key="txt" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="2436" />
-          <entry key="Python" value="268" />
+          <entry key="PLAIN_TEXT" value="2757" />
+          <entry key="Python" value="896" />
         </counts>
       </usages-collector>
     </session>
@@ -176,9 +179,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/run.py">
+        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_linear.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
+            <state relative-caret-position="157">
+              <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="143" selection-end-column="45" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -187,37 +191,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/README.md">
+        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DGP/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/args.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="73" column="126" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="126" />
+            <state relative-caret-position="269">
+              <caret line="41" column="10" selection-end-line="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="153">
+              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -232,40 +218,73 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/TripleGraph/README.md">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_average.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_average.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state relative-caret-position="30">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K2.py">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_linear.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" lean-forward="true" selection-end-line="460" />
+            <state relative-caret-position="152">
+              <caret line="404" column="64" lean-forward="true" selection-start-line="404" selection-start-column="48" selection-end-line="404" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_average.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="101" column="45" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="101" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/gcn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_linear.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="103" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_nodisen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="417" column="19" selection-start-line="417" selection-start-column="19" selection-end-line="417" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -281,7 +300,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>politicianholdsoffice</find>
       <find>cityliesonriver</find>
       <find>river</find>
       <find>university</find>
@@ -311,6 +329,7 @@
       <find>DOZSL_AGG</find>
       <find>double_entity_embedding</find>
       <find>kg_file</find>
+      <find>attent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -320,20 +339,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ZS_IMGC/models/DualGraph/train.py" />
-        <option value="$PROJECT_DIR$/ZS_KGC/models/TripleGraph/run.py" />
-        <option value="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_Random/README.md" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/RGAT/model.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/DisenKGAT/run_mult.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/RGAT/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/TransE/run.py" />
-        <option value="$PROJECT_DIR$/OntoEncoder/methods/out_kgc.py" />
-        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/util.py" />
-        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/gan_kgc.py" />
         <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/args.py" />
         <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/args.py" />
         <option value="$PROJECT_DIR$/OntoEncoder/methods/DisenE/README.md" />
@@ -371,6 +376,20 @@
         <option value="$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md" />
         <option value="$PROJECT_DIR$/ZS_KGC/models/TripleGraph/README.md" />
         <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_average.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_linear.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/gcn.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_nodisen.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_average.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_linear.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_average.py" />
+        <option value="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/README.md" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/gcn.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_average.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_linear.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_average.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_fn.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_nodisen.py" />
+        <option value="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md" />
       </list>
     </option>
   </component>
@@ -442,6 +461,26 @@
               <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="AwA2" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ImageNet" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="ZS_IMGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -461,13 +500,6 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="ZS_KGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="ZS_KGC" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="DOZSL_GAN" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="DOZSL" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -511,10 +543,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN" />
+      <recent name="$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN" />
       <recent name="$PROJECT_DIR$/OntoEncoder" />
       <recent name="$PROJECT_DIR$/OntoEncoder/methods" />
       <recent name="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_Random" />
-      <recent name="$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -739,58 +771,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/gan_kgc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10642">
-          <caret line="626" column="37" selection-start-line="626" selection-start-column="37" selection-end-line="626" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/CompGCN-ZSL/extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DisenE/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/run.py" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/RGAT/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_RD/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG_sub/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DOZSL_AGG/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/DisenKGAT/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/TransE/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/out_kgc.py" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/README.md" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/methods/out_imgc.py" />
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/DisenE/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG_sub/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4097">
-          <caret line="243" column="19" selection-start-line="243" selection-start-column="6" selection-end-line="243" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_RD/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
-          <caret line="120" column="18" selection-start-line="120" selection-start-column="6" selection-end-line="120" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OntoEncoder/DOZSL_AGG/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4080">
@@ -1030,13 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZS_KGC/models/TripleGraph/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1044,34 +1017,193 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md">
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-end-line="460" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_average.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="-570">
+          <caret line="264" column="13" lean-forward="true" selection-start-line="264" selection-start-column="13" selection-end-line="264" selection-end-column="13" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GAN/README.md">
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K2_linear.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="166">
+          <caret line="291" column="8" selection-start-line="291" selection-start-column="8" selection-end-line="294" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_average.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="276" column="29" lean-forward="true" selection-start-line="276" selection-start-column="29" selection-end-line="276" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GAN/args.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/gcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="40" column="41" lean-forward="true" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_average.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="136" column="91" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_nodisen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="408" lean-forward="true" selection-start-line="408" selection-end-line="408" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_linear.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="455" column="23" selection-start-line="455" selection-start-column="23" selection-end-line="455" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K9_average.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/RGCN-ZSL/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/gcn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/run_K4_linear.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="143" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_average.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_average.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="101" column="45" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="101" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K5_linear.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="103" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_nodisen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="417" column="19" selection-start-line="417" selection-start-column="19" selection-end-line="417" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_KGC/models/DOZSL_GCN/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="41" column="10" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/train_K2_linear.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="404" column="64" lean-forward="true" selection-start-line="404" selection-start-column="48" selection-end-line="404" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZS_IMGC/models/DOZSL_GCN/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>

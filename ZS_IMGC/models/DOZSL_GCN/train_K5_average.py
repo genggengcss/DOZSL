@@ -8,7 +8,7 @@ import json
 import scipy.sparse as sp
 
 
-from gcn import GCN, AttentiveGCN, FN
+from gcn import GCN, FN
 from utils import DATA_LOADER, spm_to_tensor, normt_spm
 
 
@@ -46,18 +46,12 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-            self.fn = FN(self.labels.shape[1]*5, self.labels.shape[1]).cuda()
 
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
-            # self.fn = FN(self.labels.shape[1]*5, self.labels.shape[1]).cuda()
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
 
 
 
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=args.lr, weight_decay=args.l2)
-        # self.optimizer_fn = torch.optim.Adam(self.fn.parameters(), lr=args.lr, weight_decay=args.l2)
 
 
     def build_graph(self, features, threshold):
@@ -93,31 +87,18 @@ class Runner:
         return res
 
     def extract_disentangled_features(self, args):
-        embed_path = '/home/gyx/ZSL2021/DisenSemEncoder/data'
-
-        # ImNet-A
         if args.DATASET == 'ImageNet/ImNet_A':
-            embed_file = os.path.join(embed_path, 'KG_ImNet_A/DisenKAGT_TransE_mult_K5_D100_ImNet_A',
-                                      '7000_6845_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'KG_ImNet_A/ent2id.txt')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_AGG_2200_2191_ent_embeddings.npy')
 
-        # # ImNet-O
         if args.DATASET == 'ImageNet/ImNet_O':
-            embed_file = os.path.join(embed_path, 'KG_ImNet_O/DisenKAGT_TransE_mult_K5_D100_ImNet_O',
-                                      '5400_5364_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'KG_ImNet_O/ent2id.txt')
-
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_RD_2000_1753_ent_embeddings.npy')
         if args.DATASET == 'AwA2':
-            embed_file = os.path.join(embed_path, 'KG_AwA/DisenKAGT_TransE_mult_K5_D100_AwA',
-                                      '2600_2541_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'KG_AwA/ent2id.txt')
-        # AwA
-        # if args.DATASET == 'AwA2':
-        #     embed_file = os.path.join(embed_path, 'KG_AwA/DOZSL_RGAT_K5_D100_AwA',
-        #                               '5200_5125_ent_embeddings.npy')
-        #     entity_file = os.path.join(embed_path, 'KG_AwA/ent2id.txt')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_AGG_5200_5125_ent_embeddings.npy')
 
-
+        entity_file = os.path.join('../../../OntoEncoder/data', args.DATASET, 'ent2id.txt')
         ent2id = json.load(open(entity_file))
 
         embeds = np.load(embed_file)
@@ -159,36 +140,21 @@ class Runner:
         return attention_distribution / torch.sum(attention_distribution, 0)
 
     def train(self, epoch):
-        weights = [0.2, 0.2, 0.2, 0.2, 0.2]
+        weight = 1/5
         n_train = self.labels.shape[0]
         self.model.train()
         # self.fn.train()
-        if args.intra_atten:
-            output_vectors1, _ = self.model(self.input1, self.adj1)
-            output_vectors2, _ = self.model(self.input2, self.adj2)
-            output_vectors3, _ = self.model(self.input3, self.adj3)
-            output_vectors4, _ = self.model(self.input4, self.adj4)
-            output_vectors5, _ = self.model(self.input5, self.adj5)
-        else:
-            output_vectors1 = self.model(self.input1, self.adj1)
-            output_vectors2 = self.model(self.input2, self.adj2)
-            output_vectors3 = self.model(self.input3, self.adj3)
-            output_vectors4 = self.model(self.input4, self.adj4)
-            output_vectors5 = self.model(self.input5, self.adj5)
 
-        output_vectors = weights[0] * output_vectors1 + weights[1] * output_vectors2 + weights[2] * output_vectors3 + \
-                         weights[3] * output_vectors4 + weights[4] * output_vectors5
-        # output_vectors = self.fn(torch.cat((output_vectors1, output_vectors2, output_vectors3, output_vectors4, output_vectors5), 1))
+        output_vectors1 = self.model(self.input1, self.adj1)
+        output_vectors2 = self.model(self.input2, self.adj2)
+        output_vectors3 = self.model(self.input3, self.adj3)
+        output_vectors4 = self.model(self.input4, self.adj4)
+        output_vectors5 = self.model(self.input5, self.adj5)
+
+        output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
+                         weight * output_vectors4 + weight * output_vectors5
 
 
-        if args.inter_atten:
-            for i in range(output_vectors.shape[0]):
-                v1 = output_vectors[i]
-
-                M2 = torch.stack((output_vectors1[i], output_vectors2[i], output_vectors3[i], output_vectors4[i], output_vectors5[i]), 0)
-                sim = self.get_att_dis(v1, M2)
-                sim = sim.reshape((sim.size(0), 1)).cuda()
-                output_vectors[i] = torch.sum(sim * M2, 0)
 
 
         # calculate the loss over training seen nodes
@@ -203,35 +169,15 @@ class Runner:
         if epoch % args.evaluate_epoch == 0:
             self.model.eval()
             # self.fn.eval()
-            if args.intra_atten:
-                output_vectors1, _ = self.model(self.input1, self.adj1)
-                output_vectors2, _ = self.model(self.input2, self.adj2)
-                output_vectors3, _ = self.model(self.input3, self.adj3)
-                output_vectors4, _ = self.model(self.input4, self.adj4)
-                output_vectors5, _ = self.model(self.input5, self.adj5)
 
-            else:
-                output_vectors1 = self.model(self.input1, self.adj1)
-                output_vectors2 = self.model(self.input2, self.adj2)
-                output_vectors3 = self.model(self.input3, self.adj3)
-                output_vectors4 = self.model(self.input4, self.adj4)
-                output_vectors5 = self.model(self.input5, self.adj5)
+            output_vectors1 = self.model(self.input1, self.adj1)
+            output_vectors2 = self.model(self.input2, self.adj2)
+            output_vectors3 = self.model(self.input3, self.adj3)
+            output_vectors4 = self.model(self.input4, self.adj4)
+            output_vectors5 = self.model(self.input5, self.adj5)
 
-            output_vectors = weights[0] * output_vectors1 + weights[1] * output_vectors2 + weights[
-                2] * output_vectors3 + \
-                             weights[3] * output_vectors4 + weights[4] * output_vectors5
-            # output_vectors = self.fn(
-            #     torch.cat((output_vectors1, output_vectors2, output_vectors3, output_vectors4, output_vectors5), 1))
-
-            if args.inter_atten:
-                for i in range(output_vectors.shape[0]):
-                    v1 = output_vectors[i]
-
-                    M2 = torch.stack((output_vectors1[i], output_vectors2[i], output_vectors3[i], output_vectors4[i], output_vectors5[i]),
-                                     0)
-                    sim = self.get_att_dis(v1, M2)
-                    sim = sim.reshape((sim.size(0), 1)).cuda()
-                    output_vectors[i] = torch.sum(sim * M2, 0)
+            output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
+                             weight * output_vectors4 + weight * output_vectors5
 
             train_loss = self.l2_loss(output_vectors[:n_train], self.labels).item()
 
@@ -461,7 +407,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
 
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_IMGC/data')
+    parser.add_argument('--DATA_DIR', default='../../data')
     # parser.add_argument('--DATASET', default='ImageNet/ImNet_O', help='the folder to store subset files')
     parser.add_argument('--DATASET', default='AwA2', help='the folder to store subset files')
 
@@ -478,9 +424,6 @@ if __name__ == '__main__':
 
     # parameters for DKGP
     parser.add_argument('--sim_threshold', type=float, default=0.99)
-    parser.add_argument('--intra_atten', action='store_true')
-    parser.add_argument('--inter_atten', action='store_true')
-    parser.add_argument('--mask_weight', type=int, default=300)
 
 
     parser.add_argument('--test_epoch', type=int, default=300)

@@ -11,7 +11,7 @@ from tqdm import tqdm
 import scipy.sparse as sp
 from sklearn.metrics.pairwise import cosine_similarity
 
-from gcn import GCN, AttentiveGCN, FN
+from gcn import GCN, FN
 from util import spm_to_tensor, normt_spm
 from extractor import Extractor
 
@@ -93,11 +93,9 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
-            self.fn = FN(self.labels.shape[1] * 9, self.labels.shape[1]).cuda()
+
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
+        self.fn = FN(self.labels.shape[1] * 9, self.labels.shape[1]).cuda()
 
         # Loss and optimizer
         self.optimizer = torch.optim.Adam(
@@ -141,21 +139,16 @@ class Runner:
 
     def extract_disentangled_features(self, args):
 
-        embed_path = '/home/gyx/ZSL2021/DisenSemEncoder/data'
 
         if args.DATASET == 'NELL':
-            embed_file = os.path.join(embed_path, 'Onto_NELL/DOZSL_RGAT_K9_D200_NELL',
-                                      '2000_1911_ent_embeddings.npy')
-            # embed_file = os.path.join(embed_path, 'Onto_NELL/DisenKAGT_TransE_mult_K9_D200_NELL',
-            #                           '4000_3991_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'Onto_NELL/ent2id.txt')
-        if args.DATASET == 'Wiki':
-            # embed_file = os.path.join(embed_path, 'Onto_Wiki/DOZSL_RGAT_K9_D200_Wiki',
-            #                           '2600_2598_ent_embeddings.npy')
-            embed_file = os.path.join(embed_path, 'Onto_Wiki/DisenKAGT_TransE_mult_K9_D200_Wiki',
-                                      '4600_4566_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'Onto_Wiki/ent2id.txt')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_AGG_2000_1911_ent_embeddings.npy')
 
+        if args.DATASET == 'Wiki':
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      '4600_4566_ent_embeddings.npy')
+
+        entity_file = os.path.join('../../../OntoEncoder/data', args.DATASET, 'ent2id.txt')
         ent2id = json.load(open(entity_file))
 
         embeds = np.load(embed_file)
@@ -282,43 +275,27 @@ class Runner:
         # attention_distribution = F.softmax(attention_distribution)
         return attention_distribution / torch.sum(attention_distribution, 0)
     def train(self, epoch):
-        # weights = [0.25, 0.25, 0.25, 0.25]
-        weight = 1/9
+
         n_train = self.labels.shape[0]
         # Start training
         self.model.train()
         self.fn.train()
-        if args.intra_atten:
-            output_vectors1, _ = self.model(self.input1, self.adj1)
-            output_vectors2, _ = self.model(self.input2, self.adj2)
-            output_vectors3, _ = self.model(self.input3, self.adj3)
-            output_vectors4, _ = self.model(self.input4, self.adj4)
-        else:
-            output_vectors1 = self.model(self.input1, self.adj1)
-            output_vectors2 = self.model(self.input2, self.adj2)
-            output_vectors3 = self.model(self.input3, self.adj3)
-            output_vectors4 = self.model(self.input4, self.adj4)
-            output_vectors5 = self.model(self.input5, self.adj5)
-            output_vectors6 = self.model(self.input6, self.adj6)
-            output_vectors7 = self.model(self.input7, self.adj7)
-            output_vectors8 = self.model(self.input8, self.adj8)
-            output_vectors9 = self.model(self.input9, self.adj9)
 
-        # output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
-        #                  weight * output_vectors4 + weight * output_vectors5 + weight * output_vectors6 + \
-        #                  weight * output_vectors7 + weight * output_vectors8 + weight * output_vectors9
+        output_vectors1 = self.model(self.input1, self.adj1)
+        output_vectors2 = self.model(self.input2, self.adj2)
+        output_vectors3 = self.model(self.input3, self.adj3)
+        output_vectors4 = self.model(self.input4, self.adj4)
+        output_vectors5 = self.model(self.input5, self.adj5)
+        output_vectors6 = self.model(self.input6, self.adj6)
+        output_vectors7 = self.model(self.input7, self.adj7)
+        output_vectors8 = self.model(self.input8, self.adj8)
+        output_vectors9 = self.model(self.input9, self.adj9)
+
         output_vectors = self.fn(torch.cat((output_vectors1, output_vectors2, output_vectors3, output_vectors4, output_vectors5,
                                             output_vectors6, output_vectors7, output_vectors8, output_vectors9), 1))
 
 
-        if args.inter_atten:
-            for i in range(output_vectors.shape[0]):
-                v1 = output_vectors[i]
 
-                M2 = torch.stack((output_vectors1[i], output_vectors2[i], output_vectors3[i], output_vectors4[i]), 0)
-                sim = self.get_att_dis(v1, M2)
-                sim = sim.reshape((sim.size(0), 1)).cuda()
-                output_vectors[i] = torch.sum(sim * M2, 0)
 
 
         loss = self.l2_loss(output_vectors[:n_train], self.labels)
@@ -334,39 +311,20 @@ class Runner:
                 self.model.eval()
                 self.fn.eval()
 
-                if args.intra_atten:
-                    output_vectors1, _ = self.model(self.input1, self.adj1)
-                    output_vectors2, _ = self.model(self.input2, self.adj2)
-                    output_vectors3, _ = self.model(self.input3, self.adj3)
-                    output_vectors4, _ = self.model(self.input4, self.adj4)
-                else:
-                    output_vectors1 = self.model(self.input1, self.adj1)
-                    output_vectors2 = self.model(self.input2, self.adj2)
-                    output_vectors3 = self.model(self.input3, self.adj3)
-                    output_vectors4 = self.model(self.input4, self.adj4)
-                    output_vectors5 = self.model(self.input5, self.adj5)
-                    output_vectors6 = self.model(self.input6, self.adj6)
-                    output_vectors7 = self.model(self.input7, self.adj7)
-                    output_vectors8 = self.model(self.input8, self.adj8)
-                    output_vectors9 = self.model(self.input9, self.adj9)
 
-                # output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
-                #                  weight * output_vectors4 + weight * output_vectors5 + weight * output_vectors6 + \
-                #                  weight * output_vectors7 + weight * output_vectors8 + weight * output_vectors9
+                output_vectors1 = self.model(self.input1, self.adj1)
+                output_vectors2 = self.model(self.input2, self.adj2)
+                output_vectors3 = self.model(self.input3, self.adj3)
+                output_vectors4 = self.model(self.input4, self.adj4)
+                output_vectors5 = self.model(self.input5, self.adj5)
+                output_vectors6 = self.model(self.input6, self.adj6)
+                output_vectors7 = self.model(self.input7, self.adj7)
+                output_vectors8 = self.model(self.input8, self.adj8)
+                output_vectors9 = self.model(self.input9, self.adj9)
+
                 output_vectors = self.fn(
                     torch.cat((output_vectors1, output_vectors2, output_vectors3, output_vectors4, output_vectors5,
                                output_vectors6, output_vectors7, output_vectors8, output_vectors9), 1))
-
-                if args.inter_atten:
-                    for i in range(output_vectors.shape[0]):
-                        v1 = output_vectors[i]
-
-                        M2 = torch.stack(
-                            (output_vectors1[i], output_vectors2[i], output_vectors3[i], output_vectors4[i]),
-                            0)
-                        sim = self.get_att_dis(v1, M2)
-                        sim = sim.reshape((sim.size(0), 1)).cuda()
-                        output_vectors[i] = torch.sum(sim * M2, 0)
 
 
                 loss_test = self.l2_loss(
@@ -485,9 +443,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
-    # python run_K9_linear.py --DATASET Wiki --input_dim 200 --hidden_layers d100,d --embed_dim 50 --ep_dim 100 --test_epoch 1800 --sim_threshold 0.95 --device 2
     # parameters for data
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_KGC/data', help='directory for ZSL data')
+    parser.add_argument('--DATA_DIR', default='../../data', help='directory for ZSL data')
     parser.add_argument('--DATASET', default='NELL', help='NELL, Wiki')
 
 
@@ -514,9 +471,6 @@ if __name__ == "__main__":
 
 
     parser.add_argument('--sim_threshold', type=float, default=0.97)
-    parser.add_argument('--intra_atten', action='store_true')
-    parser.add_argument('--inter_atten', action='store_true')
-    parser.add_argument('--mask_weight', type=int, default=500)
 
 
 

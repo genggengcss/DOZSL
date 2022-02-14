@@ -8,7 +8,7 @@ import json
 import scipy.sparse as sp
 
 
-from gcn import GCN, AttentiveGCN
+from gcn import GCN
 from utils import DATA_LOADER, spm_to_tensor, normt_spm
 
 
@@ -41,10 +41,8 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
+
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
 
 
 
@@ -84,20 +82,26 @@ class Runner:
         return res
 
     def extract_embed_features(self, args):
-        # ImNet-A
 
-        # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_H_A_65000.mat')
-        # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_DisenKGAT', 'RGAT_K1_D100_6200_6164.mat')
+        if args.DATASET == 'ImageNet/ImNet_A':
+            # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+            #                           'TransE_65000.mat')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+                                      'RGAT_6200_6164.mat')
 
-        # ImNet-O
-        # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_H_A_55000.mat')
-        # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_DisenKGAT',
-        #                           'RGAT_K1_D100_3000_2869.mat')
+        if args.DATASET == 'ImageNet/ImNet_O':
+            # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+            #                           'TransE_55000.mat')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+                                      'RGAT_3000_2869.mat')
+        if args.DATASET == 'AwA2':
+            # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+            #                           'TransE_65000.mat')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'cls_embeddings',
+                                      'RGAT_9200_9191_65000.mat')
 
-        # AwA
-        # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_H_A_65000.mat')
-        embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', 'kge_DisenKGAT',
-                                  'RGAT_K1_D100_9200_9191.mat')
+        entity_file = os.path.join('../../../OntoEncoder/data', args.DATASET, 'ent2id.txt')
+        ent2id = json.load(open(entity_file))
 
         matcontent = scio.loadmat(embed_file)
         embed = matcontent['embeddings']
@@ -142,14 +146,10 @@ class Runner:
         return attention_distribution / torch.sum(attention_distribution, 0)
 
     def train(self, epoch):
-        weights = [0.25, 0.25, 0.25, 0.25]
         n_train = self.labels.shape[0]
         self.model.train()
-        if args.intra_atten:
-            output_vectors, _ = self.model(self.input, self.adj)
 
-        else:
-            output_vectors = self.model(self.input, self.adj)
+        output_vectors = self.model(self.input, self.adj)
 
 
         # calculate the loss over training seen nodes
@@ -161,11 +161,7 @@ class Runner:
         # calculate loss on training (and validation) seen nodes
         if epoch % args.evaluate_epoch == 0:
             self.model.eval()
-            if args.intra_atten:
-                output_vectors, _ = self.model(self.input, self.adj)
-
-            else:
-                output_vectors = self.model(self.input, self.adj)
+            output_vectors = self.model(self.input, self.adj)
 
             train_loss = self.l2_loss(output_vectors[:n_train], self.labels).item()
 
@@ -395,7 +391,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
 
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_IMGC/data')
+    parser.add_argument('--DATA_DIR', default='../../data')
     # parser.add_argument('--DATASET', default='ImageNet/ImNet_O', help='the folder to store subset files')
     parser.add_argument('--DATASET', default='AwA2', help='the folder to store subset files')
 
@@ -412,9 +408,6 @@ if __name__ == '__main__':
 
     # parameters for DKGP
     parser.add_argument('--sim_threshold', type=float, default=0.9)
-    parser.add_argument('--intra_atten', action='store_true')
-    parser.add_argument('--inter_atten', action='store_true')
-    parser.add_argument('--mask_weight', type=int, default=300)
 
     parser.add_argument('--test_epoch', type=int, default=300)
     parser.add_argument('--evaluate_epoch', type=int, default=10)

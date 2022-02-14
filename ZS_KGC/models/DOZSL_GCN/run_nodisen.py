@@ -11,7 +11,7 @@ from tqdm import tqdm
 import scipy.sparse as sp
 from sklearn.metrics.pairwise import cosine_similarity
 
-from gcn import GCN, AttentiveGCN
+from gcn import GCN
 from util import spm_to_tensor, normt_spm
 from extractor import Extractor
 
@@ -73,9 +73,6 @@ class Runner:
 
         self.sim_threshold = args.sim_threshold
         self.input, self.adj = self.build_graph(node_feats, self.sim_threshold)
-        # self.input2, self.adj2 = self.build_graph(node_feats2, self.sim_threshold)
-        # self.input3, self.adj3 = self.build_graph(node_feats3, self.sim_threshold)
-        # self.input4, self.adj4 = self.build_graph(node_feats4, self.sim_threshold)
 
         print("Loading Training Data ... ")
         fc_vectors = self.prepare_train_data()
@@ -86,10 +83,7 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
         # Loss and optimizer
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=self.args.lr, weight_decay=self.args.l2
@@ -130,14 +124,21 @@ class Runner:
     def extract_embed_features(self, args):
         rel2id = json.load(open(os.path.join(args.DATA_DIR, args.DATASET, 'relation2ids')))
 
-        if args.DATASET == 'NELL':
-            # embed_file = 'rela_matrix_rdfs_55000.npz'
-            embed_file = 'kge_DisenKGAT/RGAT_K1_D200_3400_3360.npz'
-        if args.DATASET == 'Wiki':
-            # embed_file = 'rela_matrix_rdfs_65000.npz'
-            embed_file = 'kge_DisenKGAT/RGAT_K1_D200_6400_6357.npz'
 
-        print(embed_file)
+        if args.DATASET == 'NELL':
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'rel_embeddings',
+                                      'RGAT_3400_3360.npz')
+            # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'rel_embeddings',
+            #                           'TransE_55000.npz')
+
+        if args.DATASET == 'Wiki':
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'rel_embeddings',
+                                      'RGAT_6400_6357.npz')
+            # embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'rel_embeddings',
+            #                           'TransE_65000.npz')
+
+
+
         rela_matrix = np.load(os.path.join(args.DATA_DIR, args.DATASET, 'KG_file', 'embeddings', embed_file))['relaM']
 
         feat_list = []
@@ -250,14 +251,10 @@ class Runner:
         # attention_distribution = F.softmax(attention_distribution)
         return attention_distribution / torch.sum(attention_distribution, 0)
     def train(self, epoch):
-        weights = [0.25, 0.25, 0.25, 0.25]
         n_train = self.labels.shape[0]
         # Start training
         self.model.train()
-        if args.intra_atten:
-            output_vectors, _ = self.model(self.input, self.adj)
-        else:
-            output_vectors = self.model(self.input, self.adj)
+        output_vectors = self.model(self.input, self.adj)
 
         loss = self.l2_loss(output_vectors[:n_train], self.labels)
         # Backward and optimize
@@ -395,7 +392,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # parameters for data
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_KGC/data', help='directory for ZSL data')
+    parser.add_argument('--DATA_DIR', default='../../data', help='directory for ZSL data')
     parser.add_argument('--DATASET', default='NELL', help='NELL, Wiki')
 
 
@@ -422,9 +419,6 @@ if __name__ == "__main__":
 
 
     parser.add_argument('--sim_threshold', type=float, default=0.85)
-    parser.add_argument('--intra_atten', action='store_true')
-    parser.add_argument('--inter_atten', action='store_true')
-    parser.add_argument('--mask_weight', type=int, default=500)
 
 
 

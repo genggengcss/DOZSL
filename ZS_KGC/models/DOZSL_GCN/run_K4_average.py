@@ -11,7 +11,7 @@ from tqdm import tqdm
 import scipy.sparse as sp
 from sklearn.metrics.pairwise import cosine_similarity
 
-from gcn import GCN, AttentiveGCN, FN
+from gcn import GCN
 from util import spm_to_tensor, normt_spm
 from extractor import Extractor
 
@@ -60,7 +60,9 @@ class Runner:
         feature_encoder.apply(self.weights_init)
         MODEL_PATH = os.path.join(args.DATA_DIR, args.DATASET, 'expri_data', 'models_train',
                                   args.embed_model + '_Extractor')
+        # feature_encoder.load_state_dict(torch.load(MODEL_PATH))
         feature_encoder.load_state_dict(torch.load(MODEL_PATH, map_location=lambda storage, loc: storage.cuda(args.device)))
+
         self.feature_encoder = feature_encoder
         self.feature_encoder.eval()
 
@@ -68,11 +70,13 @@ class Runner:
         # prepare graph
 
 
-        node_feats1, node_feats2 = self.extract_disentangled_features(args)
+        node_feats1, node_feats2, node_feats3, node_feats4 = self.extract_disentangled_features(args)
 
         self.sim_threshold = args.sim_threshold
         self.input1, self.adj1 = self.build_graph(node_feats1, self.sim_threshold)
         self.input2, self.adj2 = self.build_graph(node_feats2, self.sim_threshold)
+        self.input3, self.adj3 = self.build_graph(node_feats3, self.sim_threshold)
+        self.input4, self.adj4 = self.build_graph(node_feats4, self.sim_threshold)
 
         print("Loading Training Data ... ")
         fc_vectors = self.prepare_train_data()
@@ -83,16 +87,11 @@ class Runner:
 
         self.hidden_layers = args.hidden_layers
         # construct gcn model
-        if args.intra_atten:
-            self.model = AttentiveGCN(args.input_dim, self.labels.shape[1], self.hidden_layers, args.mask_weight).cuda()
-        else:
-            self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
-            self.fn = FN(self.labels.shape[1] * 2, self.labels.shape[1]).cuda()
+        self.model = GCN(args.input_dim, self.labels.shape[1], self.hidden_layers).cuda()
         # Loss and optimizer
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=self.args.lr, weight_decay=self.args.l2
         )
-        self.optimizer_fn = torch.optim.Adam(self.fn.parameters(), lr=args.lr, weight_decay=args.l2)
 
     def build_graph(self, features, threshold):
         # compute similarity
@@ -127,31 +126,20 @@ class Runner:
         return res
 
     def extract_disentangled_features(self, args):
-        # embed_path = '/home/gyx/KGE/DisenKGE/' + 'checkpoints/TransE_K4_D200_Onto_14_12_2021_14:16:47'
-        # embed_file = os.path.join(embed_path, '22:05:46_7600_7504_ent_embeddings.npy')
-        #
-        # entity_file = '/home/gyx/KGE/DisenKGE/' + 'data/NELL_Onto/ent2id.txt'
-        # ent2id = json.load(open(entity_file))
-
-        # embed_path = '/home/gyx/ZSL2021/DisenSemEncoder/data'
-        embed_path = '/home/xuyajing/zsl2021/ZSL2021/DisenSemEncoder/data'
-
-
-
         if args.DATASET == 'NELL':
-            embed_file = os.path.join(embed_path, 'Onto_NELL/DisenKAGT_TransE_mult_K2_D200_NELL',
-                                      '5600_5525_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'Onto_NELL/ent2id.txt')
-        if args.DATASET == 'Wiki':
-            embed_file = os.path.join(embed_path, 'Onto_Wiki/DOZSL_Random_Atten_K2_D200_Wiki',
-                                      '10600_10152_ent_embeddings.npy')
-            entity_file = os.path.join(embed_path, 'Onto_Wiki/ent2id.txt')
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_RD_6400_6278_ent_embeddings.npy')
 
+        if args.DATASET == 'Wiki':
+            embed_file = os.path.join(args.DATA_DIR, args.DATASET, 'concept_embeddings',
+                                      'DOZSL_RD_14400_14058_ent_embeddings.npy')
+
+        entity_file = os.path.join('../../../OntoEncoder/data', args.DATASET, 'ent2id.txt')
 
         ent2id = json.load(open(entity_file))
 
         embeds = np.load(embed_file)
-        feat1_list, feat2_list = [], []
+        feat1_list, feat2_list, feat3_list, feat4_list = [], [], [], []
         for rel in self.all_rels:
             if args.DATASET == 'NELL':
                 rel = rel.replace('concept:', 'NELL:')
@@ -162,10 +150,12 @@ class Runner:
                 vector = embeds[ent2id[rel]]
                 feat1_list.append(vector[0])
                 feat2_list.append(vector[1])
+                feat3_list.append(vector[2])
+                feat4_list.append(vector[3])
             else:
                 print(rel)
 
-        return np.array(feat1_list), np.array(feat2_list)
+        return np.array(feat1_list), np.array(feat2_list), np.array(feat3_list), np.array(feat4_list)
 
 
     def prepare_train_data(self):
@@ -266,59 +256,40 @@ class Runner:
         # attention_distribution = F.softmax(attention_distribution)
         return attention_distribution / torch.sum(attention_distribution, 0)
     def train(self, epoch):
-        weights = [0.25, 0.25, 0.25, 0.25]
+        weight = 1/4
         n_train = self.labels.shape[0]
         # Start training
         self.model.train()
-        self.fn.train()
-
         output_vectors1 = self.model(self.input1, self.adj1)
         output_vectors2 = self.model(self.input2, self.adj2)
-        output_vectors = self.fn(torch.cat((output_vectors1, output_vectors2), 1))
+        output_vectors3 = self.model(self.input3, self.adj3)
+        output_vectors4 = self.model(self.input4, self.adj4)
+        output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
+                         weight * output_vectors4
 
-        if args.inter_atten:
-            for i in range(output_vectors.shape[0]):
-                v1 = output_vectors[i]
 
-                M2 = torch.stack((output_vectors1[i], output_vectors2[i]), 0)
-                sim = self.get_att_dis(v1, M2)
-                sim = sim.reshape((sim.size(0), 1)).cuda()
-                output_vectors[i] = torch.sum(sim * M2, 0)
 
 
         loss = self.l2_loss(output_vectors[:n_train], self.labels)
         # Backward and optimize
         self.optimizer.zero_grad()
-        self.optimizer_fn.zero_grad()
         loss.backward()
         self.optimizer.step()
-        self.optimizer_fn.step()
 
         if epoch % args.evaluate_epoch == 0:
             with torch.no_grad():
                 self.model.eval()
-                self.fn.eval()
 
 
                 output_vectors1 = self.model(self.input1, self.adj1)
                 output_vectors2 = self.model(self.input2, self.adj2)
+                output_vectors3 = self.model(self.input3, self.adj3)
+                output_vectors4 = self.model(self.input4, self.adj4)
 
-                # output_vectors = weights[0] * output_vectors1 + weights[1] * output_vectors2 + weights[
-                #     2] * output_vectors3 + \
-                #                  weights[3] * output_vectors4
-                output_vectors = self.fn(
-                    torch.cat((output_vectors1, output_vectors2), 1))
+                output_vectors = weight * output_vectors1 + weight * output_vectors2 + weight * output_vectors3 + \
+                                 weight * output_vectors4
 
-                if args.inter_atten:
-                    for i in range(output_vectors.shape[0]):
-                        v1 = output_vectors[i]
 
-                        M2 = torch.stack(
-                            (output_vectors1[i], output_vectors2[i]),
-                            0)
-                        sim = self.get_att_dis(v1, M2)
-                        sim = sim.reshape((sim.size(0), 1)).cuda()
-                        output_vectors[i] = torch.sum(sim * M2, 0)
 
 
                 loss_test = self.l2_loss(
@@ -438,7 +409,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # parameters for data
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_KGC/data', help='directory for ZSL data')
+    parser.add_argument('--DATA_DIR', default='../../data', help='directory for ZSL data')
     parser.add_argument('--DATASET', default='NELL', help='NELL, Wiki')
 
 
@@ -461,12 +432,10 @@ if __name__ == "__main__":
 
     parser.add_argument('--evaluate_epoch', type=int, default=10)
     parser.add_argument('--test_epoch', type=int, default=1000)
-    parser.add_argument("--epochs", type=int, default=2000, help="Number of epochs to train.")
+    parser.add_argument("--epochs", type=int, default=2500, help="Number of epochs to train.")
+
 
     parser.add_argument('--sim_threshold', type=float, default=0.98)
-    parser.add_argument('--intra_atten', action='store_true')
-    parser.add_argument('--inter_atten', action='store_true')
-    parser.add_argument('--mask_weight', type=int, default=500)
 
 
 

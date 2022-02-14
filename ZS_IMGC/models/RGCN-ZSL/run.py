@@ -321,7 +321,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # parameters for data
-    parser.add_argument('--DATA_DIR', default='/home/gyx/ZSL2021/ZS_IMGC/data', help='directory for ZSL data')
+    parser.add_argument('--DATA_DIR', default='../../data', help='directory for ZSL data')
     # parser.add_argument('--DATASET', default='AwA2', help='ImNet_A, ImNet_O, AwA2')
     parser.add_argument('--DATASET', default='ImageNet/ImNet_A', help='ImNet_A, ImNet_O, AwA2')
 

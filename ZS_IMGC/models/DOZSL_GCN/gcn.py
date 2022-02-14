@@ -100,48 +100,5 @@ class GCN(nn.Module):
         return F.normalize(x)
 
 
-class AttentiveGCN(GCN):
 
-    def __init__(self, in_channels, out_channels, hidden_layers, mask_weight):
-        super(self.__class__, self).__init__(in_channels, out_channels, hidden_layers)
-
-        self.mask_weight = mask_weight
-
-
-    def add_atten_cos(self, inputs):
-        output = inputs
-        # print output
-
-        # consin distance
-        output = F.normalize(output)
-        output_T = output.t()
-        logits = torch.mm(output, output_T)
-
-        # mask = self.mask
-        # mask /= torch.mean(mask)
-        # print self.mask
-        logits = logits * self.mask_weight
-
-        # logits = logits * self.mask.t()
-        coefs = F.softmax(logits, dim=1)
-        # coefs = F.softmax(logits, dim=1)
-        # coefs = logits
-        # print coefs
-        coefs = torch.where(coefs < 1e-3, torch.full_like(coefs, 0), coefs)
-        # print(coefs)
-        output_atten = torch.mm(coefs, inputs)
-        # print output_atten
-        return output_atten, coefs
-
-
-    def forward(self, x, adj):
-
-        for conv in self.layers:
-            x = conv(x, adj)
-
-        x = F.normalize(x)
-
-        x_atten, coefs = self.add_atten_cos(x)
-        return x_atten, coefs
-        # return x
 
